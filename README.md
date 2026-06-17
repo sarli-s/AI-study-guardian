@@ -14,19 +14,20 @@
 
 ---
 
-## 🛠️ Project Structure
+## 🛠️ ארכיטקטורת הפרויקט (Project Structure)
 
-The project is built in a modular and professional way (Service-Oriented Architecture):
+הפרויקט בנוי בצורה מודולרית ומקצועית:
 
-* `main.py` — the main runtime file that manages the GUI and Threading (simultaneous execution of the camera and microphone).
-* `services/` — AI services folder:
-* `vision_service.py` — Image processing and computer vision service (`OpenCV`).
-* `audio_service.py` — Audio and microphone sampling service (`sounddevice`).
-* `haarcascade_frontalface_default.xml` — Native AI model for facial recognition.
-* `.gitignore` — Filters temporary files and large compilation files.
-* `requirements.txt` — List of libraries to install.
+* `main.py` — קובץ הריצה הראשי שמנהל את ה-GUI ואת ה-Threading (הרצה במקביל של המצלמה והמיקרופון).
+* `services/` — תיקיית שירותי ה-AI:
+    * `vision_service.py` — שירות עיבוד התמונה וראייה ממוחשבת (`OpenCV`).
+    * `audio_service.py` — שירות דגימת השמע והמיקרופון (`sounddevice`).
+* `tests/` — קבצי בדיקה והרצה עצמאיים לכל רכיב חומרה באופן מבודד (`audio_test.py`, `vision_test.py`).
+* `.gitignore` — מסנן קבצים זמניים של פייתון ותיקיות קימפול כבדות (`build`, `dist`).
+* `requirements.txt` — רשימת הספריות להתקנה.
 
 ---
+
 
 ## ⚙️ Instructions for operation and running
 
