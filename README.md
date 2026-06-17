@@ -14,17 +14,17 @@
 
 ---
 
-## 🛠️ ארכיטקטורת הפרויקט (Project Structure)
+## 🛠️ Project Structure
 
-הפרויקט בנוי בצורה מודולרית ומקצועית:
+The project is built in a modular and professional way:
 
-* `main.py` — קובץ הריצה הראשי שמנהל את ה-GUI ואת ה-Threading (הרצה במקביל של המצלמה והמיקרופון).
-* `services/` — תיקיית שירותי ה-AI:
-    * `vision_service.py` — שירות עיבוד התמונה וראייה ממוחשבת (`OpenCV`).
-    * `audio_service.py` — שירות דגימת השמע והמיקרופון (`sounddevice`).
-* `tests/` — קבצי בדיקה והרצה עצמאיים לכל רכיב חומרה באופן מבודד (`audio_test.py`, `vision_test.py`).
-* `.gitignore` — מסנן קבצים זמניים של פייתון ותיקיות קימפול כבדות (`build`, `dist`).
-* `requirements.txt` — רשימת הספריות להתקנה.
+* `main.py` — the main runtime file that manages the GUI and threading (simultaneous execution of the camera and microphone).
+* `services/` — the AI ​​services folder:
+* `vision_service.py` — the image processing and computer vision service (`OpenCV`).
+* `audio_service.py` — the audio and microphone sampling service (`sounddevice`).
+* `tests/` — independent test and runtime files for each hardware component in isolation (`audio_test.py`, `vision_test.py`).
+* `.gitignore` — filters temporary Python files and heavy compilation folders (`build`, `dist`).
+* `requirements.txt` — the list of libraries to install.
 
 ---
 
