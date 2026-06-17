@@ -1,66 +1,66 @@
 # Smart Study Buddy 🧠✨
 
-**Smart Study Buddy** היא אפליקציית פייתון מקומית וחכמה הפועלת ברקע, המיועדת לשפר את חווית הלמידה והעבודה מול המחשב. המערכת משתמשת בטכנולוגיות בינה מלאכותית (AI) וראייה ממוחשבת (Computer Vision) כדי להשגיח על המשתמש ולשמור על בריאותו וריכוזו בזמן אמת, ללא תלות בחיבור לאינטרנט (עוקף חסימות נטפרי ב-100%).
+**Smart Study Buddy** is a local and smart Python application that runs in the background, designed to improve the learning and working experience in front of the computer. The system uses artificial intelligence (AI) and computer vision technologies to monitor the user and maintain their health and concentration in real time, regardless of the Internet connection (bypasses NetFri blocks by 100%).
 
 ---
 
-## 🚀 תכונות עיקריות (Features)
+## 🚀 Main features
 
-* **📐 ניתוח יציבה דינמי (Posture Monitor):** באמצעות המצלמה, המערכת מזהה אם המשתמש רוכן קדימה או מתקרב בצורה מסוכנת למסך, ומקפיצה התראה חיונית ליישור הגב.
-* **☕ זיהוי עייפות וראש שמוט (Fatigue Detection):** אלגוריתם גיאומטרי מזהה אם המשתמש שוקע בכיסא או שומט את ראשו מחוסר כוחות, ומציע לקחת הפסקה או כוס מים.
-* **🎧 ניתוח רעשי רקע (Audio Noise Control):** שירות שמע רציף (Audio Stream) המנתח את עוצמת האות (RMS) ומזהה סביבה רועשת מדי, כדי להמליץ למשתמש לשים אוזניות לצורך שמירה על הריכוז.
-* **💻 ממשק גרפי עצמאי (GUI):** חלון קטן ונקי (`tkinter`) המאפשר למשתמש לראות שהמערכת פועלת, ולסגור אותה בקלות בלחיצת כפתור אחת.
-* **📦 עצמאי לחלוטין (Local & Offline AI):** המערכת רצה כולה על המעבד המקומי, ללא פניות לשרתים חיצוניים או ספריות ענן כבדות, מה שמבטיח מהירות שיא, פרטיות מלאה ותאימות לסינון אינטרנט מחמיר.
-
----
-
-## 🛠️ ארכיטקטורת הפרויקט (Project Structure)
-
-הפרויקט בנוי בצורה מודולרית ומקצועית (Service-Oriented Architecture):
-
-* `main.py` — קובץ הריצה הראשי שמנהל את ה-GUI ואת ה-Threading (הרצה במקביל של המצלמה והמיקרופון).
-* `services/` — תיקיית שירותי ה-AI:
-    * `vision_service.py` — שירות עיבוד התמונה וראייה ממוחשבת (`OpenCV`).
-    * `audio_service.py` — שירות דגימת השמע והמיקרופון (`sounddevice`).
-* `haarcascade_frontalface_default.xml` — מודל ה-AI המקומי לזיהוי מבנה פנים.
-* `.gitignore` — מסנן קבצים זמניים וקבצי קימפול כבדים.
-* `requirements.txt` — רשימת הספריות להתקנה.
+* **📐 Dynamic posture analysis (Posture Monitor):** Using the camera, the system detects if the user is leaning forward or dangerously close to the screen, and pops up an alert essential for straightening the back.
+* **☕ Fatigue and drooping head detection:** A geometric algorithm detects if the user is sinking in the chair or drooping their head due to lack of strength, and suggests taking a break or a glass of water.
+* **🎧 Audio Noise Control:** A continuous audio service (Audio Stream) that analyzes the signal strength (RMS) and identifies an environment that is too noisy, to recommend that the user put on headphones to maintain concentration.
+* **💻 Independent Graphical Interface (GUI):** A small and clean window (`tkinter`) that allows the user to see that the system is running, and to easily close it with a single click.
+* **📦 Completely independent (Local & Offline AI):** The system runs entirely on the local processor, without contacting external servers or heavy cloud libraries, which ensures peak speed, full privacy and compatibility with strict internet filtering.
 
 ---
 
-## ⚙️ הוראות הפעלה והרצה
+## 🛠️ Project Structure
 
-### 1. התקנת דרישות קדם
-ודאי שמותקן אצלך פייתון, והריצי בטרמינל את הפקודה הבאה להתקנת כל הספריות הנחוצות:
+The project is built in a modular and professional way (Service-Oriented Architecture):
+
+* `main.py` — the main runtime file that manages the GUI and Threading (simultaneous execution of the camera and microphone).
+* `services/` — AI services folder:
+* `vision_service.py` — Image processing and computer vision service (`OpenCV`).
+* `audio_service.py` — Audio and microphone sampling service (`sounddevice`).
+* `haarcascade_frontalface_default.xml` — Native AI model for facial recognition.
+* `.gitignore` — Filters temporary files and large compilation files.
+* `requirements.txt` — List of libraries to install.
+
+---
+
+## ⚙️ Instructions for operation and running
+
+### 1. Installing prerequisites
+Make sure you have Python installed, and run the following command in the terminal to install all the necessary libraries:
 ```bash
 pip install -r requirements.txt
 ```
-### 2. הרצת האפליקציה
-להפעלת המערכת מתוך קוד המקור:
+### 2. Running the application
+To run the system from the source code:
 ```bash
 python main.py
 ```
 
-### 3. קימפול לקובץ ריצה עצמאי (EXE)
-כדי לייצר קובץ main.exe שאפשר להריץ בכל מחשב ווינדוס (גם ללא פייתון מותקן):
+### 3. Compiling into a standalone executable file (EXE)
+To create a main.exe file that can be run on any Windows computer (even without Python installed):
 ```bash
 pyinstaller --onefile --windowed main.py
 ```
-הקובץ המקומפל המוכן יימצא בתוך תיקיית dist/.
+The ready-made compiled file will be found in the dist/ folder.
 
-## 🧑‍💻 טכנולוגיות בשימוש (Tech Stack)
+## 🧑‍💻 Technologies used (Tech Stack)
 
-| רכיב / תחום | טכנולוגיה ונתיב יישום | תפקיד במערכת |
+| Component / Domain | Technology and Implementation Path | Role in the System |
 | :--- | :--- | :--- |
-| **שפת פיתוח** | `Python` | שפת הליבה לניהול הארכיטקטורה המודולרית של הפרויקט. |
-| **בינה מלאכותית וראייה ממוחשבת** | `OpenCV (Haar Cascades)` | עיבוד תמונה שקט בזמן אמת, זיהוי פנים, ניתוח קואורדינטות יציבה וזיהוי מדדי עייפות. |
-| **עיבוד אותות שמע** | `Sounddevice` & `NumPy` | דגימה רציפה (Audio Stream) של רעשי הרקע וחישוב מתמטי מהיר של עוצמת האות (RMS). |
-| **ממשק משתמש גרפי** | `Tkinter` | ספריית ה-GUI המובנית של פייתון המשמשת להצגת חלונית בקרה מעוצבת וכפתור עצירה מובנה. |
-| **ניהול משימות במקביל** | `Threading (Built-in)` | הפעלת המיקרופון והמצלמה בתהליכוני רקע נפרדים (Multitasking) כדי למנוע את תקיעת הממשק הראשי. |
-| **קימפול והפצה** | `PyInstaller` | אריזת כלל קוד המקור, המפרש והתלויות לכדי קובץ ריצה בינארי בודד ועצמאי (`.exe`). |
+| **Development Language** | `Python` | The core language for managing the modular architecture of the project. |
+| **Artificial Intelligence and Computer Vision** | `OpenCV (Haar Cascades)` | Real-time silent image processing, face recognition, posture coordinate analysis and fatigue index detection. |
+| **Audio signal processing** | `Sounddevice` & `NumPy` | Continuous sampling (Audio Stream) of background noise and fast mathematical calculation of signal strength (RMS). |
+| **Graphical User Interface** | `Tkinter` | Python's built-in GUI library used to display a designed control panel and a built-in stop button. |
+| **Parallel Task Management** | `Threading (Built-in)` | Running the microphone and camera in separate background processes (Multitasking) to prevent the main interface from crashing. |
+| **Compiling and Distribution** | `PyInstaller` | Packaging all source code, interpreter and dependencies into a single, independent binary executable file (`.exe`). |
 
 ---
 
-### ✨ דגשים טכנולוגיים בארכיטקטורה:
-* **עיבוד מקומי (100% Offline):** כלל הספריות והאלגוריתמים רצים ישירות על ה-CPU של מחשב הקצה, ללא צורך באינטרנט או פניות לשרתים חיצוניים (עוקף חסימות סינון באופן מלא).
-* **יציבות משופרת בקימפול:** האפליקציה תומכת במנגנון `--windowed` המאפשר הפעלה חלקה של התראות פנימיות מתוך ה-UI ישירות אל מעל כל חלונות המערכת האחרים של המשתמש.
+### ✨ Technological highlights in the architecture:
+* **Local processing (100% Offline):** All libraries and algorithms run directly on the CPU of the end computer, without the need for the Internet or calls to external servers (fully bypasses filtering blocks).
+* **Improved stability in compilation:** The application supports the `--windowed` mechanism that allows smooth activation of internal notifications from the UI directly on top of all other system windows of the user.
