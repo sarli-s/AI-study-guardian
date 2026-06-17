@@ -1,10 +1,26 @@
 import cv2
+from services.IServices import IVisionService
 
-class VisionService:
+class VisionService(IVisionService):
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        #One-time boot
+        cls._instance._initialized = False
+        return cls._instance
+
+
     def __init__(self):
+        if self._initialized:
+            return
         # Loading the stable face classifier
         self.face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         print("[Vision Service] Local AI Service updated for high stability.")
+
+        self._initialized = True
+
         
     def analyze_frame(self, frame):
         """

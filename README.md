@@ -18,14 +18,13 @@
 
 The project is built in a modular and professional way:
 
-* `main.py` — the main runtime file that manages the GUI and threading (simultaneous execution of the camera and microphone).
-* `services/` — the AI ​​services folder:
-* `vision_service.py` — the image processing and computer vision service (`OpenCV`).
-* `audio_service.py` — the audio and microphone sampling service (`sounddevice`).
-* `tests/` — independent test and runtime files for each hardware component in isolation (`audio_test.py`, `vision_test.py`).
-* `.gitignore` — filters temporary Python files and heavy compilation folders (`build`, `dist`).
-* `requirements.txt` — the list of libraries to install.
-
+* `main.py` — The main runtime file and **Composition Root** that boots up the application and sets up the GUI.
+* `study_facade.py` — The system's central coordinator executing the **Facade Pattern**.
+* `services/` — The AI services folder:
+    * `IServices.py` — Abstract interfaces establishing the architecture contracts (`IAudioService`, `IVisionService`).
+    * `vision_service.py` — The image processing and computer vision service implementing `IVisionService`.
+    * `audio_service.py` — The audio and microphone sampling service implementing `IAudioService`.
+* `tests/` — Independent test and runtime files for each hardware component in isolation.
 ---
 
 
@@ -61,6 +60,18 @@ The ready-made compiled file will be found in the dist/ folder.
 | **Compiling and Distribution** | `PyInstaller` | Packaging all source code, interpreter and dependencies into a single, independent binary executable file (`.exe`). |
 
 ---
+
+---
+
+## 📐 Architecture & Design Patterns
+
+The project follows clean code principles and strictly implements advanced software design patterns to ensure scalability, testability, and loose coupling:
+
+* **🔒 Singleton Pattern:** Applied to the core background services to guarantee that only a single instance of `VisionService` and `AudioService` exists during runtime. This prevents critical hardware resource conflicts when accessing the camera and microphone.
+* **🏛️ Facade Pattern (`study_facade.py`):** Unified the background services (Vision & Audio) and thread management under a single interface (`StudyMonitorFacade`). This decouples the presentation layer (`main.py` GUI) entirely from the complex underlying hardware and AI execution logic (**Separation of Concerns**).
+* **💉 Dependency Injection (DI):** Instead of the Facade creating its own dependencies, they are injected from the outside via the constructor (**Constructor Injection**). `main.py` acts as the **Composition Root**, instantiating the real hardware components and injecting them into the manager.
+* **🔌 Interface-Driven Design (`IServiced.py`):** Embracing the **D** in **SOLID** principles (**Dependency Inversion**), the Facade layer communicates exclusively with abstract interfaces (`IVisionService`, `IAudioService`) rather than concrete classes. This allows seamless mocking for isolated automated testing in the `tests/` folder.
+
 
 ### ✨ Technological highlights in the architecture:
 * **Local processing (100% Offline):** All libraries and algorithms run directly on the CPU of the end computer, without the need for the Internet or calls to external servers (fully bypasses filtering blocks).

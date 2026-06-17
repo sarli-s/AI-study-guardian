@@ -1,12 +1,26 @@
 import numpy as np
 import sounddevice as sd
+from services.IServices import IAudioService
 
-class AudioService:
-    def __init__(self, threshold=15.0):
+class AudioService(IAudioService):
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        #One-time boot
+        cls._instance._initialized = False
+        return cls._instance
+
+    def __init__(self,  threshold=15.0):
+        if self._initialized:
+            return
         self.threshold = threshold
         self.is_noisy = False
         self.stream = None
         print("[Audio Service] Local Stream Service Initialized.")
+        self._initialized = True
+
 
     def _audio_callback(self, indata, frames, time, status):
         """
