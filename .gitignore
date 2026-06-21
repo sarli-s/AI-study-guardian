@@ -14,3 +14,4 @@ venv/
 # קבצי הגדרות של עורכי קוד
 .vscode/
 .idea/
+emotion_model.onnx
