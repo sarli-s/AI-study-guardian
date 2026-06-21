@@ -8,6 +8,11 @@
 
 * **📐 Dynamic posture analysis (Posture Monitor):** Using the camera, the system detects if the user is leaning forward or dangerously close to the screen, and pops up an alert essential for straightening the back.
 * **☕ Fatigue and drooping head detection:** A geometric algorithm detects if the user is sinking in the chair or drooping their head due to lack of strength, and suggests taking a break or a glass of water.
+* ** 🤖🎭 Advanced Emotion Recognition Model (Deep Learning)
+The system now includes an offline-capable, high-performance **Deep Learning CNN (Convolutional Neural Network) Model** using **ONNX Runtime**:
+    * Real-time Inference:** Analyzes facial expressions directly through the webcam stream with sub-millisecond processing times.
+    * Smart Distress Detection:** Trained on the FER2013 dataset, specifically calibrated to identify frustration, anger, and sadness with a confidence score threshold.
+    * Network & SSL Resilience:** Features automatic SSL bypass and dynamic fallback handlers, allowing stable downloads and fully offline operation in strictly restricted environments (e.g., filtered internet).
 * **🎧 Audio Noise Control:** A continuous audio service (Audio Stream) that analyzes the signal strength (RMS) and identifies an environment that is too noisy, to recommend that the user put on headphones to maintain concentration.
 * **💻 Independent Graphical Interface (GUI):** A small and clean window (`tkinter`) that allows the user to see that the system is running, and to easily close it with a single click.
 * **📦 Completely independent (Local & Offline AI):** The system runs entirely on the local processor, without contacting external servers or heavy cloud libraries, which ensures peak speed, full privacy and compatibility with strict internet filtering.

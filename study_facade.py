@@ -11,6 +11,7 @@ class StudyMonitorFacade:
         self.running = False
         self.vision_srv = vision_service
         self.audio_srv = audio_service
+        self.last_sad_alert = 0
 
     def start_monitoring(self):
         """Runs all monitoring systems in the background using walkers"""
@@ -89,6 +90,17 @@ class StudyMonitorFacade:
                                 timeout=5
                             )
                             last_mood_alert = current_time
+                            
+                    # Sadness detection alert (once every 45 seconds)
+                    if result.get("sad_alert") and current_time - self.last_sad_alert > 45:
+                        notification.notify(
+                            title="הכל טוב? נראה שקצת קשה לך... 💙",
+                            message="זיהיתי ירידה באנרגיה או תסכול. מה דעתך לצאת להתאווררות קלה או להדליק מוזיקה טובה?",
+                            app_name="SmartStudyBuddy",
+                            timeout=7
+                        )
+                        self.last_sad_alert = current_time
+                        
                 time.sleep(1)
         except Exception as e:
             print(f"Vision Error: {e}")
