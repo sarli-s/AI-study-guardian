@@ -8,8 +8,8 @@ class AudioService(IAudioService):
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super().__new__(cls)
-        #One-time boot
-        cls._instance._initialized = False
+            #One-time boot
+            cls._instance._initialized = False
         return cls._instance
 
     def __init__(self,  threshold=15.0):
